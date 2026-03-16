@@ -9,7 +9,7 @@
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
   background: #fff;
-  color: #111111; /* default teks hitam */
+  color: #fff;
   font-weight: 400;
 }
 
@@ -25,11 +25,21 @@ body {
 
   padding: 18px 0;
 
-  background: #ffffff; /* navbar selalu putih */
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1); /* opsional, tetap beri shadow */
+  background: transparent;
+
+  transition: all 0.35s ease;
+}
+
+/* Hover / Scroll / Menu Open = Putih */
+.header:hover,
+.header.scrolled,
+.header.menu-open {
+  background: #ffffff;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
 }
 
 /* Garis bawah elegan (abu tipis) */
+
 .header::after {
   content: "";
   position: absolute;
@@ -40,7 +50,17 @@ body {
   height: 1px;
 
   background: rgba(0, 0, 0, 0.08);
-  opacity: 1; /* selalu terlihat */
+
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+/* Aktif saat scroll / hover */
+
+.header:hover::after,
+.header.scrolled::after,
+.header.menu-open::after {
+  opacity: 1;
 }
 
 /* ================= CONTAINER ================= */
@@ -63,8 +83,16 @@ body {
 
 .logo img {
   height: 68px;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35)); /* shadow tetap */
+
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+
   transition: 0.3s;
+}
+
+.header:hover .logo img,
+.header.scrolled .logo img,
+.header.menu-open .logo img {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
 }
 
 /* ================= NAVBAR ================= */
@@ -74,9 +102,13 @@ body {
   align-items: center;
   gap: 26px;
 }
+.header.scrolled {
+  padding: 10px 0;
+}
+/* ================= NAV LINK ================= */
 
 .navbar a {
-  color: #111111; /* teks selalu hitam */
+  color: #ffffff;
   text-decoration: none;
 
   font-size: 15px;
@@ -86,6 +118,13 @@ body {
   padding: 6px 2px;
 
   transition: 0.25s;
+}
+
+/* Text jadi hitam */
+.header:hover .navbar a,
+.header.scrolled .navbar a,
+.header.menu-open .navbar a {
+  color: #111111;
 }
 
 /* ================= GOLD UNDERLINE ================= */
@@ -112,7 +151,7 @@ body {
   transition: width 0.3s ease;
 }
 
-/* Hover / Active underline */
+/* Hover / Active */
 .navbar a:hover::after,
 .navbar a.active::after {
   width: 100%;
@@ -137,13 +176,20 @@ body {
   width: 100%;
   height: 3px;
 
-  background: #1f2933; /* selalu gelap supaya terlihat */
+  background: #ffffff;
   border-radius: 3px;
 
   transition: 0.3s;
 }
 
-/* ================= MOBILE ================= */
+/* Warna adaptif */
+.header:hover .hamburger span,
+.header.scrolled .hamburger span,
+.header.menu-open .hamburger span {
+  background: #1f2933;
+}
+
+/* ================= MOBILE PREMIUM ================= */
 
 @media (max-width: 900px) {
   /* Show hamburger */
@@ -153,18 +199,21 @@ body {
     height: 22px;
   }
 
+  /* Lock scroll saat menu aktif */
   body.menu-open {
     overflow: hidden;
     height: 100vh;
   }
 
   /* ================= NAVBAR PANEL ================= */
+
   .navbar {
     position: fixed;
     top: 76px;
     left: 0;
     width: 100%;
     height: calc(100vh - 76px);
+
     background: #ffffff;
 
     flex-direction: column;
@@ -173,30 +222,35 @@ body {
 
     padding-top: 35px;
 
-    /* State default: hidden */
     transform: translateY(-15px);
     opacity: 0;
     pointer-events: none;
 
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
     z-index: 99999;
   }
 
-  /* Active state (JS toggle) */
+  /* Active state */
   .navbar.active {
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
   }
 
+  /* Mobile link style */
   .navbar a {
     width: 100%;
     text-align: center;
+
     font-size: 18px;
     font-weight: 600;
+
     padding: 20px 0;
+
     color: #1f2933;
     border-bottom: 1px solid #f1f5f9;
+
     transition: all 0.25s ease;
   }
 
@@ -205,6 +259,7 @@ body {
     color: #b8860b;
   }
 
+  /* Underline subtle */
   .navbar a::after {
     bottom: 8px;
   }
@@ -213,6 +268,8 @@ body {
   .navbar a.active::after {
     width: 40%;
   }
+
+  /* ================= HAMBURGER ANIMATION ================= */
 
   .hamburger span {
     transition: all 0.35s ease;
