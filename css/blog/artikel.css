@@ -1,0 +1,277 @@
+/* =================================
+   BLOG PAGE – PREMIUM CORPORATE
+================================= */
+
+:root {
+  --primary: #0f172a;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+
+  --bg-light: #f8fafc;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+}
+
+/* =================================
+   SECTION WRAPPER
+================================= */
+
+.content-section {
+  padding: 90px 20px;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.content-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =================================
+   BLOG GRID
+================================= */
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* =================================
+   BLOG CARD
+================================= */
+
+.blog-post {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s ease;
+}
+
+.blog-post:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+}
+
+/* Image */
+
+.blog-post img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-post:hover img {
+  transform: scale(1.05);
+}
+
+/* =================================
+   BLOG CONTENT
+================================= */
+
+.blog-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Date */
+
+.blog-date {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  letter-spacing: 0.3px;
+}
+
+/* Title */
+
+.blog-post h2 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.blog-post h2 a {
+  text-decoration: none;
+  color: var(--primary);
+  transition: 0.3s ease;
+}
+
+.blog-post h2 a:hover {
+  color: var(--accent);
+}
+
+/* Description */
+
+.blog-post p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+/* =================================
+   READ MORE LINK
+================================= */
+
+.read-more {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  position: relative;
+  width: fit-content;
+  transition: 0.3s ease;
+}
+
+.read-more::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.read-more:hover {
+  color: var(--accent-hover);
+}
+
+.read-more:hover::after {
+  width: 100%;
+}
+
+/* =================================
+   PAGINATION – PREMIUM
+================================= */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 60px;
+  flex-wrap: wrap;
+}
+
+.pagination a {
+  padding: 9px 16px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--primary);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.pagination a:hover {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.pagination a.active {
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* =================================
+   RESPONSIVE – CLEAN & PREMIUM
+================================= */
+
+/* ===== Large Tablet ===== */
+@media (max-width: 1100px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 900px) {
+  .content-section {
+    padding: 70px 20px;
+  }
+
+  .blog-grid {
+    gap: 26px;
+  }
+
+  .blog-post img {
+    height: 200px;
+  }
+}
+
+/* ===== Mobile Premium ===== */
+@media (max-width: 768px) {
+  .content-section {
+    padding: 60px 18px;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .blog-post {
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  }
+
+  .blog-post img {
+    height: 220px;
+  }
+
+  .blog-content {
+    padding: 22px;
+  }
+
+  .blog-post h2 {
+    font-size: 17px;
+  }
+
+  .blog-post p {
+    font-size: 14px;
+  }
+}
+
+/* ===== Small Mobile ===== */
+@media (max-width: 480px) {
+  .content-section {
+    padding: 50px 15px;
+  }
+
+  .blog-post img {
+    height: 190px;
+  }
+
+  .blog-content {
+    padding: 18px;
+  }
+
+  .blog-post h2 {
+    font-size: 16px;
+  }
+
+  .blog-post p {
+    font-size: 13.5px;
+  }
+
+  .pagination {
+    margin-top: 40px;
+  }
+
+  .pagination a {
+    font-size: 13px;
+    padding: 7px 12px;
+  }
+}

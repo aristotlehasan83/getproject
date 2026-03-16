@@ -1,0 +1,308 @@
+/* ================= GLOBAL ================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: #fff;
+  color: #fff;
+  font-weight: 400;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  z-index: 100000;
+
+  padding: 18px 0;
+
+  background: transparent;
+
+  transition: all 0.35s ease;
+}
+
+/* Hover / Scroll / Menu Open = Putih */
+.header:hover,
+.header.scrolled,
+.header.menu-open {
+  background: #ffffff;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Garis bawah elegan (abu tipis) */
+
+.header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background: rgba(0, 0, 0, 0.08);
+
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+/* Aktif saat scroll / hover */
+
+.header:hover::after,
+.header.scrolled::after,
+.header.menu-open::after {
+  opacity: 1;
+}
+
+/* ================= CONTAINER ================= */
+
+.container {
+  width: 90%;
+  max-width: 1320px;
+  margin: auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ================= LOGO ================= */
+
+.logo {
+  z-index: 100001;
+}
+
+.logo img {
+  height: 68px;
+
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+
+  transition: 0.3s;
+}
+
+.header:hover .logo img,
+.header.scrolled .logo img,
+.header.menu-open .logo img {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+.header.scrolled {
+  padding: 10px 0;
+}
+/* ================= NAV LINK ================= */
+
+.navbar a {
+  color: #ffffff;
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  position: relative;
+  padding: 6px 2px;
+
+  transition: 0.25s;
+}
+
+/* Text jadi hitam */
+.header:hover .navbar a,
+.header.scrolled .navbar a,
+.header.menu-open .navbar a {
+  color: #111111;
+}
+
+/* ================= GOLD UNDERLINE ================= */
+
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+
+  width: 0;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    #b8860b,
+    #d4af37,
+    #f4d03f,
+    #d4af37,
+    #b8860b
+  );
+
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+/* Hover / Active */
+.navbar a:hover::after,
+.navbar a.active::after {
+  width: 100%;
+}
+
+/* ================= HAMBURGER ================= */
+
+.hamburger {
+  display: none;
+
+  width: 32px;
+  height: 24px;
+
+  flex-direction: column;
+  justify-content: space-between;
+
+  cursor: pointer;
+  z-index: 100001;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 3px;
+
+  background: #ffffff;
+  border-radius: 3px;
+
+  transition: 0.3s;
+}
+
+/* Warna adaptif */
+.header:hover .hamburger span,
+.header.scrolled .hamburger span,
+.header.menu-open .hamburger span {
+  background: #1f2933;
+}
+
+/* ================= MOBILE PREMIUM ================= */
+
+@media (max-width: 900px) {
+  /* Show hamburger */
+  .hamburger {
+    display: flex;
+    width: 30px;
+    height: 22px;
+  }
+
+  /* Lock scroll saat menu aktif */
+  body.menu-open {
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  /* ================= NAVBAR PANEL ================= */
+
+  .navbar {
+    position: fixed;
+    top: 76px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 76px);
+
+    background: #ffffff;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding-top: 35px;
+
+    transform: translateY(-15px);
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+    z-index: 99999;
+  }
+
+  /* Active state */
+  .navbar.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Mobile link style */
+  .navbar a {
+    width: 100%;
+    text-align: center;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    padding: 20px 0;
+
+    color: #1f2933;
+    border-bottom: 1px solid #f1f5f9;
+
+    transition: all 0.25s ease;
+  }
+
+  .navbar a:hover {
+    background: #f8fafc;
+    color: #b8860b;
+  }
+
+  /* Underline subtle */
+  .navbar a::after {
+    bottom: 8px;
+  }
+
+  .navbar a:hover::after,
+  .navbar a.active::after {
+    width: 40%;
+  }
+
+  /* ================= HAMBURGER ANIMATION ================= */
+
+  .hamburger span {
+    transition: all 0.35s ease;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 600px) {
+  .navbar {
+    top: 70px;
+    height: calc(100vh - 70px);
+    padding-top: 25px;
+  }
+
+  .navbar a {
+    font-size: 17px;
+    padding: 18px 0;
+  }
+
+  .logo img {
+    height: 60px;
+  }
+}

@@ -1,0 +1,140 @@
+/* ================= AFTERSALES SECTION ================= */
+
+.aftersales {
+  padding: 120px 20px;
+  background: #f8fafc;
+}
+
+.aftersales .container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ================= WRAPPER ================= */
+
+.aftersales-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 70px;
+  align-items: center;
+}
+
+/* ================= LEFT ================= */
+
+.aftersales-info span {
+  display: inline-block;
+  background: #fff7ed;
+  color: #f59e0b;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.aftersales-info h2 {
+  font-size: 38px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.aftersales-info p {
+  font-size: 16px;
+  color: #64748b;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+/* LIST */
+
+.aftersales-info ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 35px;
+}
+
+.aftersales-info li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: #0f172a;
+  font-weight: 500;
+}
+
+.aftersales-info i {
+  color: #22c55e;
+}
+
+/* BUTTON */
+
+.btn-main {
+  display: inline-block;
+  background: #f59e0b;
+  color: #fff;
+  padding: 13px 32px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-main:hover {
+  background: #d97706;
+}
+
+/* ================= RIGHT ================= */
+
+.aftersales-services {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+/* CARD */
+
+.service-card {
+  background: #ffffff;
+  padding: 35px 28px;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  transition: 0.3s;
+  text-align: left;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.service-card i {
+  font-size: 26px;
+  color: #f59e0b;
+  margin-bottom: 15px;
+}
+
+.service-card h3 {
+  font-size: 19px;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .aftersales-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .aftersales-services {
+    grid-template-columns: 1fr;
+  }
+}
