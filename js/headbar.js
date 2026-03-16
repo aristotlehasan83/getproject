@@ -94,11 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function toggleMenu() {
-    if (navbar.classList.contains("active")) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+    navbar.classList.contains("active") ? closeMenu() : openMenu();
   }
 
   hamburger.addEventListener("click", (e) => {
@@ -106,10 +102,12 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleMenu();
   });
 
+  // Close menu on link click
   document.querySelectorAll(".navbar a").forEach((link) => {
     link.addEventListener("click", closeMenu);
   });
 
+  // Close menu when clicking outside
   document.addEventListener("click", (e) => {
     if (
       navbar.classList.contains("active") &&
@@ -120,7 +118,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Close menu on resize (desktop)
   window.addEventListener("resize", () => {
     if (window.innerWidth > 900) closeMenu();
+  });
+
+  /* ================= STICKY HEADER (OPTIONAL) ================= */
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 20) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
   });
 });
