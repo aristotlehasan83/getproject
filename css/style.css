@@ -9,7 +9,7 @@
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
   background: #fff;
-  color: #fff;
+  color: #111111; /* default teks hitam */
   font-weight: 400;
 }
 
@@ -25,21 +25,13 @@ body {
 
   padding: 18px 0;
 
-  background: transparent;
+  background: #ffffff; /* navbar selalu putih */
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
 
   transition: all 0.35s ease;
 }
 
-/* Hover / Scroll / Menu Open = Putih */
-.header:hover,
-.header.scrolled,
-.header.menu-open {
-  background: #ffffff;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-}
-
 /* Garis bawah elegan (abu tipis) */
-
 .header::after {
   content: "";
   position: absolute;
@@ -51,16 +43,8 @@ body {
 
   background: rgba(0, 0, 0, 0.08);
 
-  opacity: 0;
+  opacity: 1; /* selalu terlihat */
   transition: 0.3s ease;
-}
-
-/* Aktif saat scroll / hover */
-
-.header:hover::after,
-.header.scrolled::after,
-.header.menu-open::after {
-  opacity: 1;
 }
 
 /* ================= CONTAINER ================= */
@@ -83,16 +67,8 @@ body {
 
 .logo img {
   height: 68px;
-
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
-
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
   transition: 0.3s;
-}
-
-.header:hover .logo img,
-.header.scrolled .logo img,
-.header.menu-open .logo img {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
 }
 
 /* ================= NAVBAR ================= */
@@ -102,13 +78,11 @@ body {
   align-items: center;
   gap: 26px;
 }
-.header.scrolled {
-  padding: 10px 0;
-}
+
 /* ================= NAV LINK ================= */
 
 .navbar a {
-  color: #ffffff;
+  color: #111111;
   text-decoration: none;
 
   font-size: 15px;
@@ -118,13 +92,6 @@ body {
   padding: 6px 2px;
 
   transition: 0.25s;
-}
-
-/* Text jadi hitam */
-.header:hover .navbar a,
-.header.scrolled .navbar a,
-.header.menu-open .navbar a {
-  color: #111111;
 }
 
 /* ================= GOLD UNDERLINE ================= */
@@ -161,7 +128,6 @@ body {
 
 .hamburger {
   display: none;
-
   width: 32px;
   height: 24px;
 
@@ -176,20 +142,13 @@ body {
   width: 100%;
   height: 3px;
 
-  background: #ffffff;
+  background: #1f2933;
   border-radius: 3px;
 
-  transition: 0.3s;
+  transition: 0.35s ease;
 }
 
-/* Warna adaptif */
-.header:hover .hamburger span,
-.header.scrolled .hamburger span,
-.header.menu-open .hamburger span {
-  background: #1f2933;
-}
-
-/* ================= MOBILE PREMIUM ================= */
+/* ================= MOBILE ================= */
 
 @media (max-width: 900px) {
   /* Show hamburger */
@@ -227,7 +186,6 @@ body {
     pointer-events: none;
 
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-
     z-index: 99999;
   }
 
@@ -270,10 +228,6 @@ body {
   }
 
   /* ================= HAMBURGER ANIMATION ================= */
-
-  .hamburger span {
-    transition: all 0.35s ease;
-  }
 
   .hamburger.active span:nth-child(1) {
     transform: rotate(45deg) translate(6px, 6px);
