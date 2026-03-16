@@ -146,6 +146,7 @@ body {
 /* ================= MOBILE ================= */
 
 @media (max-width: 900px) {
+  /* Show hamburger */
   .hamburger {
     display: flex;
     width: 30px;
@@ -157,13 +158,13 @@ body {
     height: 100vh;
   }
 
+  /* ================= NAVBAR PANEL ================= */
   .navbar {
     position: fixed;
     top: 76px;
     left: 0;
     width: 100%;
     height: calc(100vh - 76px);
-
     background: #ffffff;
 
     flex-direction: column;
@@ -172,24 +173,31 @@ body {
 
     padding-top: 35px;
 
-    transform: translateY(0); /* langsung muncul */
+    /* State default: hidden */
+    transform: translateY(-15px);
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 99999;
+  }
+
+  /* Active state (JS toggle) */
+  .navbar.active {
+    transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
-
-    z-index: 99999;
   }
 
   .navbar a {
     width: 100%;
     text-align: center;
-
     font-size: 18px;
     font-weight: 600;
-
     padding: 20px 0;
-
     color: #1f2933;
     border-bottom: 1px solid #f1f5f9;
+    transition: all 0.25s ease;
   }
 
   .navbar a:hover {
@@ -204,6 +212,10 @@ body {
   .navbar a:hover::after,
   .navbar a.active::after {
     width: 40%;
+  }
+
+  .hamburger span {
+    transition: all 0.35s ease;
   }
 
   .hamburger.active span:nth-child(1) {
