@@ -152,24 +152,25 @@ body {
 
   .navbar {
     position: fixed;
-    top: 0; /* navbar selalu di atas */
+    top: 76px; /* sesuaikan dengan tinggi header */
     left: 0;
     width: 100%;
-    height: 100vh; /* full screen mobile */
+    height: calc(100vh - 76px); /* full height minus header */
     background: #ffffff;
 
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
 
-    padding-top: 80px; /* jarak dari header ke link */
-    transform: translateY(-100%); /* hidden awal */
+    padding-top: 35px; /* jarak dalam navbar */
+    transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
 
     transition: transform 0.35s ease, opacity 0.35s ease;
     z-index: 99999;
   }
+
 
   /* Active state */
   .navbar.active {
